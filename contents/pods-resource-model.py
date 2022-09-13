@@ -120,6 +120,10 @@ def nodeCollectData(pod, container, defaults, taglist, mappingList, boEmoticon):
                     # take the values from default
                     if "default:" in value:
                         custom_attribute = default_settings[value]
+                    elif "labels:" in value:
+                        label = value.replace("labels:", "")
+                        if label in pod.metadata.labels:
+                            custom_attribute = pod.metadata.labels[label]
                     else:
                         # taking the values from docker inspect
                         for item in json:
