@@ -2410,7 +2410,7 @@ providers:
         type: String
         title: "Name"
         description: "Pod Name"
-        required: fals
+        required: false
       - name: namespace
         type: String
         title: "Namespace"
@@ -2488,7 +2488,7 @@ providers:
         title: "Namespace"
         default: "default"
         description: "Namespace where the pod was created"
-        required: delete
+        required: false
       - name: retries
         type: String
         title: "Retries"
