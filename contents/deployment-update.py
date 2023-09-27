@@ -106,9 +106,13 @@ def create_deployment_object(data):
         template.metadata = client.V1ObjectMeta(labels=labels)
 
     # Create the specification of deployment
-    spec = client.ExtensionsV1beta1DeploymentSpec(
-        replicas=int(data["replicas"]),
-        template=template)
+    if data["replicas"] is None:
+        spec = client.ExtensionsV1beta1DeploymentSpec(template=template)
+    else:
+        spec = client.ExtensionsV1beta1DeploymentSpec(
+            replicas=int(data["replicas"]),
+            template=template)
+
     # Instantiate the deployment object
     deployment = client.ExtensionsV1beta1Deployment(
         api_version=data["api_version"],

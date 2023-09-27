@@ -577,7 +577,7 @@ providers:
         type: String
         title: "Replicas"
         description: "Number of replicas of the development"
-        required: true
+        required: false
         renderingOptions:
           groupName: Container
       - name: container_command
